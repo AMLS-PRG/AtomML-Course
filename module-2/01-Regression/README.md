@@ -1,6 +1,6 @@
-Simple Linear Regression with PyTorch Demo
+Predicting aqueous solubilities
 -----------------------------
-This script demonstrates fitting a simple linear regression model to synthetic data.
+This notebook demonstrates the regression of the aqueous solubilities of molecules using simple molecular features.
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](
 https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-2/01-Regression/regression.ipynb)
