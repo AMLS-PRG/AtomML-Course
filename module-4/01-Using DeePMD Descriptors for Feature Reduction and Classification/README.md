@@ -1,4 +1,3 @@
-# Tutorial 3 - Part B
 ## Perform dimensional reduction and classification
 
 [Start Jupyter Notebook on Colab](https://colab.research.google.com/github/PabloPiaggi/nanogune-winter-school-2025/blob/main/tutorial-3/dimensional-reduction/Analysis.ipynb)
