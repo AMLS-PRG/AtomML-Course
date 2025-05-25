@@ -2,7 +2,7 @@ Get Raw Files using dpdata
 -----------------------------
 This notebook demonstrates how to extract raw training data (positions, energies, forces, cell, and atom types) from QE .out files using the dpdata library.
 It is suitable for converting multiple converged QE outputs into a DeepMD-ready raw dataset.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Wanqi1996/Course-Pablo/blob/main/DIPC%20course%20on%20Atomistic%20Machine%20Learning/03-Lecture%203-May%2020/get_raw_files_dpdata.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/edit/main/module-4/02-Extracting%20Raw%20Training%20Data/get_raw_files_dpdata.ipynb)
 
 
 Get Raw Files using ASE
