@@ -8,4 +8,4 @@ Apply Principal Component Analysis (PCA) for feature reduction
 Use machine learning classifiers to distinguish between different atomic environments (e.g., ice, water, interfacial water)
 
 Evaluate model performance and interpret classification results
-[![Open In Colab](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-4/01-Using%20DeePMD%20Descriptors%20for%20Feature%20Reduction%20and%20Classification/Analysis-new.ipynb)
+[![Open In Colab]](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-4/01-Using%20DeePMD%20Descriptors%20for%20Feature%20Reduction%20and%20Classification/Analysis-new.ipynb)
