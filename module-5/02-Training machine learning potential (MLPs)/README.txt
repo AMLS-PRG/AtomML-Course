@@ -1,1 +1,0 @@
-This folder is the dataset for training MLPs of a Si system.
