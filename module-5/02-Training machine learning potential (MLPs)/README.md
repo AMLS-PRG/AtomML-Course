@@ -1,6 +1,6 @@
 ### 🔍 Before You Train the MLPs: Explore the Dataset
 -----------------------------
-Before training the MLPs, you can explore the dataset in LAMMPS trajectory (`.trj`) format.
+Before training the MLPs, you can explore the dataset in LAMMPS trajectory (`.trj`) format (A trajectory that does not reach the accuracy of first-principles calculations.).
 
 This trajectory will be used as input for Quantum ESPRESSO (QE) to calculate atomic **coordinates**, **forces**, **system energy**, and **virial** — which will then form the final **dataset** for training the machine learning potentials.
 
