@@ -10,7 +10,7 @@ variable        seed equal 745823 # Random seed for generating velocities
 
 units		metal
 atom_style	atomic
-read_data       si-64-liquid.lammps-data
+read_data      ./small-data/solid_supercell_3x3x3.data
 
 timestep	0.001
 neigh_modify    delay 10 every 1
