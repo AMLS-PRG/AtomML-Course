@@ -14,7 +14,7 @@ read_data      ./small-data/solid_supercell_3x3x3.data
 
 timestep	0.001
 neigh_modify    delay 10 every 1
-pair_style      deepmd ../frozen_model_1_compressed.pb ../frozen_model_2_compressed.pb ../frozen_model_3_compressed.pb ../frozen_model_4_compressed.pb out_file md.out out_freq ${out_freq}
+pair_style      deepmd ../03-Trained MLPs (Folder 02 Output)/frozen_model_1_compressed.pb ../03-Trained MLPs (Folder 02 Output)/frozen_model_2_compressed.pb ../03-Trained MLPs (Folder 02 Output)/frozen_model_3_compressed.pb ../03-Trained MLPs (Folder 02 Output)/frozen_model_4_compressed.pb out_file md.out out_freq ${out_freq}
 pair_coeff      * *
 thermo          ${out_freq}
 thermo_style 	custom step temp pe etotal epair emol press lx ly lz vol
