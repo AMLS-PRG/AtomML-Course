@@ -1,3 +1,18 @@
+### 🔍 Before You Train the MLPs: Explore the Dataset
+-----------------------------
+Before training the MLPs, you can explore the dataset in LAMMPS trajectory (`.trj`) format.
+
+This trajectory will be used as input for **Quantum ESPRESSO (QE)** to calculate atomic **coordinates**, **forces**, **system energy**, and **virial** — which will then form the final dataset for training the machine learning potentials.
+
+📌 You can:
+
+- Inspect the structure and atomic configuration in each frame.
+- Observe the **size of the simulation cell/model** in this trajectory.
+- Later, **compare it with the model size** used in final MD simulations to better understand transferability and scaling.
+
+This step helps you build intuition about the dataset before diving into model training.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/check_data.ipynb)
+
 Training MLPs using DeepMD-kit
 -----------------------------
 
