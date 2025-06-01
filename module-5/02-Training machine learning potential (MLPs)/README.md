@@ -11,15 +11,9 @@ Using the DFT energies and forces obtained in the previous tutorial, train a mod
 
 The objectives of this tutorial session are:
 - Train a DeePMD model for the potential energy surface of silicon
-- Prepare DFT output data for the training process
 - Become familiar with the inputs and outputs of the training process
-- Run molecular dynamics simulations driven by the DeePMD model
 - Identify strengths and limitations of a rudimentary model
 - Use an ensemble of models to estimate the errors in the forces
-
-## Prerequisites
-
-It is assumed that the student has completed all hands-on sessions from [day 1](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-1) of this workshop.
 
 ## Theory
 
