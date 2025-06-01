@@ -24,7 +24,7 @@ lmp < start.lmp
 and the simulation takes a couple of minutes to complete.
 The atomic coordinates are written every 10 ps to the file `si.lammps-dump-text` in LAMMPS dump format. 
 
-You can explore the dataset in LAMMPS trajectory (`.trj`) format (A trajectory that does not reach the accuracy of first-principles calculations.). [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/check_data.ipynb)
+You can explore the LAMMPS trajectory. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/check_data.ipynb)
 
 
 📌 You can:
@@ -39,6 +39,7 @@ You can explore the dataset in LAMMPS trajectory (`.trj`) format (A trajectory t
 dump                    myDump all custom ${out_freq2} si.lammps-dump-text id type element xs ys zs
 dump_modify             myDump element Si
 ```
+> **Note** This trajectory does not reach the accuracy of first-principles calculations.
 
 
 ##################################Crystalline Si - Random perturbations##################################
