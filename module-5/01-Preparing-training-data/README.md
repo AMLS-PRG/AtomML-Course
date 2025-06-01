@@ -1,14 +1,14 @@
 ## Training data
 
 ______________________________________________________
-********************************************1. Exploration********************************************
+*************************************1. Exploration*************************************
 
 We will use the training data for silicon prepared on [hand-on session 3](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-1/3-preparing-training-data).
 These data consist of:
 - Around 400 configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 - Around 300 configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
 
-############################################Crystalline Si - Random perturbations############################################
+##################################Crystalline Si - Random perturbations##################################
 
 Using this script, first, the structurally optimized structure of bulk Si with 8 atoms will be read as ASE atoms object. 
 Then the supercell will be constructed by expanding the unit cell using (2 x 2 x 2) transformation vector which yields the supercell with 64 atoms.
@@ -52,7 +52,7 @@ Let's type `python perturbations.py` to generate QE input files. Let's play with
 
 <br/>
 
-############################################Liquid Si - MD simulations with another force field############################################
+##################################Liquid Si - MD simulations with another force field##################################
 
 We will now run molecular dynamics simulation of liquid Si with the Stillinger-Weber force field using LAMMPS.
 The LAMMPS input files can be found in the directory `liquid-si-64/trajectory-lammps-1700K-1bar` for a simulation at 1 bar and 1700 K (approximate melting temperature of Stillinger-Weber Si).
