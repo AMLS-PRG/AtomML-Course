@@ -8,17 +8,16 @@ These data consist of:
 - Around 400 configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 - Around 300 configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
 
-- Before training the MLPs, you can explore the dataset in LAMMPS trajectory (`.trj`) format (A trajectory that does not reach the accuracy of first-principles calculations.).
-
+- Before training the MLPs, you can observe the dataset in LAMMPS trajectory (`.trj`) format (A trajectory that does not reach the accuracy of first-principles calculations.).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/check_data.ipynb)
 
 📌 You can:
+Inspect the structure and atomic configuration in each frame.
+Observe the **size of the simulation cell/model** in this trajectory.
+Later, **compare it with the model size** used in final MD simulations to better understand transferability and scaling.
 
-- Inspect the structure and atomic configuration in each frame.
-- Observe the **size of the simulation cell/model** in this trajectory.
-- Later, **compare it with the model size** used in final MD simulations to better understand transferability and scaling.
 
-This step helps you build intuition about the dataset before diving into model training.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/check_data.ipynb)
+
 
 
 ##################################Crystalline Si - Random perturbations##################################
