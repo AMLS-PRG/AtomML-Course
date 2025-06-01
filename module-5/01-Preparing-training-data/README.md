@@ -96,6 +96,7 @@ Another excellent way to convert output of electronic-structure calculation into
 
 
 ##################################Crystalline Si - Random perturbations##################################
+
 Now that you have generated a set of atomic configurations from the exploration step, the next step is to label these configurations, i.e., calculate energies and forces using DFT. The following `job.sh` bash script executes Quantum Espresso on the 100 input files that we just created by performing SCF DFT calculation for each frame to evaluate the forces and energy:
 ```shell
 conda deactivate
@@ -200,6 +201,68 @@ To convert the prepared raw files to the NumPy, you can utilize the tool provide
 ```
 /home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh
 ```
+
+##################################Liquid Si - MD simulations with another force field##################################
+
+We can now extract configurations from this trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` which reads:
+```python
+import numpy as np
+import ase.io
+from ase.calculators.espresso import Espresso
+import os
+
+################################
+# QE options
+################################
+
+pseudopotentials = {'Si': 'Si_ONCV_PBE-1.0.upf'}
+
+input_qe = {
+            'calculation':'scf',
+            'outdir': './',             
+            'pseudo_dir': './',         
+            'tprnfor': True,        
+            'tstress': True,        
+            'disk_io':'none',
+            'system':{
+              'ecutwfc': 30,
+              'input_dft': 'PBE',
+              'occupations': 'smearing',
+              'smearing': 'fermi-dirac',
+              'degauss': 0.01,
+             },
+            'electrons':{
+               'mixing_beta': 0.5,
+               'electron_maxstep':1000,
+             },
+}
+
+os.system('mkdir extracted-confs')
+
+# Load trajectory
+traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':')
+step=1
+counter1=0 # Number of configurations written
+counter2=0 # Frame number
+for conf in traj:
+   if ((counter2%step)==0):
+      species=np.array(conf.get_chemical_symbols())
+      species=np.full(shape=species.shape,fill_value="Si")
+      conf.set_chemical_symbols(species)
+      ase.io.write('extracted-confs/pw-si-' + str(counter1) + '.in',conf, format='espresso-in',input_data=input_qe, pseudopotentials=pseudopotentials)
+      counter1 += 1
+   counter2 += 1
+```
+Execute `python get_configurations.py`.
+This will create a folder `extracted-confs` with 100 Quantum Espresso input files with the atomic configurations extracted from the trajectory `si.lammps-dump.text`.
+You can now perform DFT calculations on all of these configurations using the same script `job.sh` as above.
+Next, extract the raw data files with the script `get_raw.py` as above, and convert them into the appropriate format for `DeePMD-kit` using the `raw_to_set.sh` script.
+
+The above calculations can be repeated for two other pressures, namely, +- 10 kbar, in order to sample a broad range of volumes.
+This is illustrated in the folders `trajectory-lammps-1700K-10000bar` and `trajectory-lammps-1700K-neg10000bar`.
+
+> **Note** ASE can get the correct `chemical_symbols` if the LAMMPS dump file has `element` info. Otherwise, use `traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':',specorder=[“Si”])` to pass the chemical symbols. If there are two types in LAMMPS, namely, Si and O, then `specorder=["Si", "O"]`.
+
 
 
 
