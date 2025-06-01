@@ -12,8 +12,8 @@ ______________________________________________________
 *************************************1. Exploration*************************************
 
 Introduction: We will explore configurations for building a dataset, which consists of:
-- Configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 - Configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
+- Configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 
 ##################################Liquid Si - MD simulations with another force field##################################
 
