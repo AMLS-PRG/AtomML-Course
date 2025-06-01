@@ -204,10 +204,7 @@ It is useful to [compress](https://pubs.acs.org/doi/full/10.1021/acs.jctc.2c0010
 This will create a model ```frozen_model_compressed.pb``` that can perform inference significantly faster than ```frozen_model.pb```.
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/compressing_mlps.ipynb)
 
-
-
-
-Deep neural network potentials can achieve high accuracy, but often at the cost of large model sizes and high computational demands. Compressing MLPs helps reduce model complexity and inference time without significantly compromising accuracy. This is particularly useful for large-scale molecular dynamics simulations, where efficiency and scalability are critical. In this notebook, we demonstrate how to compress trained models using DeepMD-kit.
+> **Note** Deep neural network potentials can achieve high accuracy, but often at the cost of large model sizes and high computational demands. Compressing MLPs helps reduce model complexity and inference time without significantly compromising accuracy. This is particularly useful for large-scale molecular dynamics simulations, where efficiency and scalability are critical. In this notebook, we demonstrate how to compress trained models using DeepMD-kit.
 
 
 
