@@ -1,5 +1,7 @@
 📘 Section Introduction
-——————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+
+——————————————————————————————————————————————————
+
 In this section's hands-on example, we will demonstrate how to train a machine learning potential (MLP) using an initial dataset, perform molecular dynamics (MD) simulations driven by the trained MLP, and analyze the resulting trajectories. The workflow consists of the following steps:
 
 01-Preparing the Initial Configuration and Labeling
