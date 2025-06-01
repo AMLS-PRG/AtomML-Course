@@ -3,7 +3,7 @@
 ______________________________________________________
 *************************************1. Exploration*************************************
 
-We will use the training data for silicon prepared on [hand-on session 3](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-1/3-preparing-training-data).
+Introduction: We will use the training data for silicon prepared on [hand-on session 3](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-1/3-preparing-training-data).
 These data consist of:
 - Around 400 configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 - Around 300 configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
@@ -69,13 +69,9 @@ The atomic coordinates are written every 10 ps to the file `si.lammps-dump-text`
 dump                    myDump all custom ${out_freq2} si.lammps-dump-text id type element xs ys zs
 dump_modify             myDump element Si
 ```
+*************************************2. Labeling*************************************
 
-
-
-
-
-
-Energies and forces for these configurations were obtained using DFT with the PBE functional.
+Introduction: Energies and forces for these configurations were obtained using DFT with the PBE functional.
 You are encouraged to use the results of your own calculations.
 However, you may also use the Quantum Espresso output files that we provide in the folders ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/example-data/liquid-si-64``` and ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/example-data/perturbations-si-64```.
 
@@ -98,6 +94,117 @@ You can execute this utility in each folder containing .raw data files using the
 The data should now be ready for the training process!
 Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
 
-We shall see below whether a DeePMD model trained on the configurations described above is able to drive the dynamics of this system, while preserving a high-accuracy.
-Can you guess if the model will be good for the liquid, the solid, none, or both? Why?
-Let's make a poll in the classroom!
+
+##################################Crystalline Si - Random perturbations##################################
+Now that you have generated a set of atomic configurations from the exploration step, the next step is to label these configurations, i.e., calculate energies and forces using DFT. The following `job.sh` bash script executes Quantum Espresso on the 100 input files that we just created by performing SCF DFT calculation for each frame to evaluate the forces and energy:
+```shell
+conda deactivate
+export PW=/home/deepmd23admin/Softwares/QuantumEspresso/q-e-qe-7.0/bin/pw.x
+for i in `seq 0 99`
+do
+        mpirun -np 1 $PW -input pw-si-$i.in > pw-si-$i.out
+done
+```
+To run these DFT tasks in the background, you can use
+```
+chmod 777 job.sh
+nohup ./job.sh &
+```
+To monitor the processes, you can use
+```
+ps aux|grep job.sh
+ps aux|grep pw.x
+```
+If you want to shutdown the calculation, execute `kill PROCESSID` where `PROCESSID` is the id of the process `job.sh`.
+
+For each input file `pw-si-$i.in`, Quantum Espresso will create a `pw-si-$i.out` file which contains the potential energy, the forces, and other useful information. 
+
+We have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
+
+<br/>
+
+<div align="center">
+	
+ID       | Property                | Raw file     | Shape                  
+-------- | ----------------------  | ------------ | -----------------------
+type     | Atom type indexes       | type.raw     | Natoms                 
+coord    | Atomic coordinates      | coord.raw    | Nframes \* Natoms \* 3  in Å
+box      | Boxes                   | box.raw      | Nframes \* 3 \* 3       in Å
+energy   | Frame energies          | energy.raw   | Nframes                 in eV
+force    | Atomic forces           | force.raw    | Nframes \* Natoms \* 3  in eV/Å
+virial   | Frame virial            | virial.raw   | Nframes \* 9 in eV       
+
+<em>The table is taken from [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). `Box` and `virial`: in the order `XX XY XZ YX YY YZ ZX ZY ZZ`.</em>
+</div>
+
+<br/>
+
+You can parse the atomic structures, potential energy, and atomic forces from QE outputs using the ASE calculator and a numpy-based python script named `get_raw.py`.
+
+```python
+import numpy as np
+import ase.io
+from ase.calculators.espresso import Espresso
+
+# Open output files for writing
+file_coord = open("coord.raw", "w")     # Coordinates
+file_energy = open("energy.raw", "w")   # Potential energy
+file_force = open("force.raw", "w")     # Forces
+file_virial = open("virial.raw", "w")   # Virial stress
+file_box = open("box.raw", "w")         # Cell dimensions
+file_type = open("type.raw", "w")       # Atom types
+
+types_written = False
+
+for i in range(100):
+    try:
+        conf = ase.io.read('pw-si-' + str(i) + '.out', format='espresso-out')
+    except:
+        print("Configuration " + str(i) + " could not be read")
+    else:
+        try:
+            conf.get_forces()
+        except:
+            print("Forces missing from file" + str(i))
+        else:
+            # Write data to respective output files
+            file_coord.write(' '.join(conf.get_positions().flatten().astype('str').tolist()) + '\n')
+            file_energy.write(str(conf.get_potential_energy()) + '\n')
+            file_force.write(' '.join(conf.get_forces().flatten().astype('str').tolist()) + '\n')
+            file_virial.write(' '.join(conf.get_stress(voigt=False).flatten().astype('str').tolist()) + '\n')
+            file_box.write(' '.join(conf.get_cell().flatten().astype('str').tolist()) + '\n')
+            
+            if not types_written:
+                types = np.array(conf.get_chemical_symbols())
+                types[types == "Si"] = "0"
+                file_type.write(' '.join(types.tolist()) + '\n')
+                types_written = True
+
+# Close output files
+file_coord.close()
+file_energy.close()
+file_force.close()
+file_virial.close()
+file_box.close()
+file_type.close()
+```
+Execute this script by typing 
+```
+python get_raw.py
+```
+
+Now let's verify if this script successfully generates the files `coord.raw`, `energy.raw`, `force.raw`, `virial.raw`, `box.raw`, and `type.raw`. It's important to note that while the raw format is not directly supported for training, NumPy and HDF5 binary formats are supported. 
+
+To convert the prepared raw files to the NumPy, you can utilize the tool provided in the DeePMD-kit `raw_to_set.sh` by
+
+```
+/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh
+```
+
+
+
+
+
+
+
+
