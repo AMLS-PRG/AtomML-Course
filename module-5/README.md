@@ -12,5 +12,5 @@ Analyzing the Trajectory from MD
 By iteratively repeating steps 1 to 3, one can implement an active learning scheme to improve the MLP during the simulation process.
 
 <p float="left">
-  <img src="https://github.com/CSIprinceton/workshop-july-2023/raw/main/hands-on-sessions/day-2/4-first-model/eq1.png" width="350">
+  <img src="https://github.com/AMLS-PRG/AtomML-Course/edit/main/module-5/Figure5-1.jpg" width="500">
 </p>
