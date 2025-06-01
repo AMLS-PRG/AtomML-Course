@@ -1,4 +1,7 @@
 ## Training data
+——————————————————————————————————————————————————————
+
+Due to the high computational cost of MD simulations and DFT calculations—and since they are not the main focus of this tutorial—we have pre-generated both MD and DFT results for your convenience. The procedures used to obtain these results are described in detail within this document. In the final part of the tutorial, you will practice converting the DFT results into a dataset suitable for DeePMD-kit training.
 
 ______________________________________________________
 *************************************1. Exploration*************************************
