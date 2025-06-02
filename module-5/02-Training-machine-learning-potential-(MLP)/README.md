@@ -180,13 +180,7 @@ The first few lines are as follows:
   10000      1.06e+00    5.91e+00      6.94e-02    4.24e-02      4.23e-02    2.53e-01    1.1e-03
 ```
 where the columns represent the training steps, the total RMS error (val-validation and trn-training), the RMS error in energy, the RMS error in the forces, and the learning rate.
-You can plot the number of steps vs the RMS errors to follow the progress of the training process.
-
-## 🔍 Loss Curve Visualization
-
-To visualize the training loss evolution of the model:
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/checking_lcurve_out.ipynb)
+You can plot the number of steps vs the RMS errors to follow the progress of the training process. 🔍 Loss Curve Visualization: To visualize the training loss evolution of the model: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/checking_lcurve_out.ipynb)
 
 
 
