@@ -39,6 +39,58 @@ dump_modify             myDump element Si
 
 > **Note** This trajectory is based on an empirical force field and not on first-principles calculations. However, we will recompute energies and forces using DFT calculations.
 
+We can now extract configurations from MD simulations trajectory and create input files to perform DFT calculations with the Jupyter Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_configurations.ipynb). The script for this task is as follows:
+
+```python
+import numpy as np
+import ase.io
+from ase.calculators.espresso import Espresso
+import os
+
+################################
+# QE options
+################################
+
+pseudopotentials = {'Si': 'Si_ONCV_PBE-1.0.upf'}
+
+input_qe = {
+            'calculation':'scf',
+            'outdir': './',             
+            'pseudo_dir': './',         
+            'tprnfor': True,        
+            'tstress': True,        
+            'disk_io':'none',
+            'system':{
+              'ecutwfc': 30,
+              'input_dft': 'PBE',
+              'occupations': 'smearing',
+              'smearing': 'fermi-dirac',
+              'degauss': 0.01,
+             },
+            'electrons':{
+               'mixing_beta': 0.5,
+               'electron_maxstep':1000,
+             },
+}
+
+os.system('mkdir extracted-confs')
+
+# Load trajectory
+traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':')
+step=1
+counter1=0 # Number of configurations written
+counter2=0 # Frame number
+for conf in traj:
+   if ((counter2%step)==0):
+      species=np.array(conf.get_chemical_symbols())
+      species=np.full(shape=species.shape,fill_value="Si")
+      conf.set_chemical_symbols(species)
+      ase.io.write('extracted-confs/pw-si-' + str(counter1) + '.in',conf, format='espresso-in',input_data=input_qe, pseudopotentials=pseudopotentials)
+      counter1 += 1
+   counter2 += 1
+```
+This will create a folder `extracted-confs` with 100 Quantum Espresso input files with the atomic configurations extracted from the trajectory `si.lammps-dump.text`.
+
 
 *************************************Crystalline Si - Random perturbations*************************************
 
@@ -89,10 +141,7 @@ Let's play with the `max_displacement` and `max_cell_change` variables by constr
 
 We now have to compute energies and forces for these configurations using DFT. Due to time limitations, we will not do these calculations during the present tutorial. The results of the DFT calculations using Quantum Espresso can be found in the folders ```module-5/01-Preparing-training-data/dataset/liquid-si-64``` and ```module-5/01-Preparing-training-data/dataset/perturbations-si-64```.
 
-*************************************Crystalline Si - Random perturbations*************************************
-
 For each input file `pw-si-$i.in`, Quantum Espresso created a `pw-si-$i.out` file which contains the potential energy, the forces, and other useful information. 
-
 
 First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
 There are many ways to carry out this task [See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion)]
@@ -182,69 +231,7 @@ The data should now be ready for the training process!
 Another excellent way to directly convert output of electronic-structure calculation (pw-si-*.out) into the DeePMD-kit format (*.npy) is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html). We also provide an example to demonstrate this process:  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_dpdata.ipynb)
 
 ### !!! 
-All training datasets formatted for use with deepMD-kit (in .npy format) are available in ´´´module-5/01-Preparing-training-data/dataset/´´´
-
-
-*************************************Liquid Si - MD simulations with another force field*************************************
-
-We can now extract configurations from MD simulations trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_configurations.ipynb) which reads:
-```python
-import numpy as np
-import ase.io
-from ase.calculators.espresso import Espresso
-import os
-
-################################
-# QE options
-################################
-
-pseudopotentials = {'Si': 'Si_ONCV_PBE-1.0.upf'}
-
-input_qe = {
-            'calculation':'scf',
-            'outdir': './',             
-            'pseudo_dir': './',         
-            'tprnfor': True,        
-            'tstress': True,        
-            'disk_io':'none',
-            'system':{
-              'ecutwfc': 30,
-              'input_dft': 'PBE',
-              'occupations': 'smearing',
-              'smearing': 'fermi-dirac',
-              'degauss': 0.01,
-             },
-            'electrons':{
-               'mixing_beta': 0.5,
-               'electron_maxstep':1000,
-             },
-}
-
-os.system('mkdir extracted-confs')
-
-# Load trajectory
-traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':')
-step=1
-counter1=0 # Number of configurations written
-counter2=0 # Frame number
-for conf in traj:
-   if ((counter2%step)==0):
-      species=np.array(conf.get_chemical_symbols())
-      species=np.full(shape=species.shape,fill_value="Si")
-      conf.set_chemical_symbols(species)
-      ase.io.write('extracted-confs/pw-si-' + str(counter1) + '.in',conf, format='espresso-in',input_data=input_qe, pseudopotentials=pseudopotentials)
-      counter1 += 1
-   counter2 += 1
-```
-This will create a folder `extracted-confs` with 100 Quantum Espresso input files with the atomic configurations extracted from the trajectory `si.lammps-dump.text`.
-You can now perform DFT calculations on all of these configurations using the same script `job.sh` as above.
-Next, extract the raw data files with the script `get_raw.py` as above, and convert them into the appropriate format for `DeePMD-kit` using the `raw_to_set.sh` script.
-
-The above calculations can be repeated for two other pressures, namely, +- 10 kbar, in order to sample a broad range of volumes.
-This is illustrated in the folders `trajectory-lammps-1700K-10000bar` and `trajectory-lammps-1700K-neg10000bar`.
-
-### !!! 
-All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
+All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/
 
 > **Note** ASE can get the correct `chemical_symbols` if the LAMMPS dump file has `element` info. Otherwise, use `traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':',specorder=[“Si”])` to pass the chemical symbols. If there are two types in LAMMPS, namely, Si and O, then `specorder=["Si", "O"]`.
 
