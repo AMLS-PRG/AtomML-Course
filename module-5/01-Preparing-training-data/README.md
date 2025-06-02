@@ -1,9 +1,7 @@
-# Preparing raining data
-——————————————————————————————————————————————————————
+# Preparing training data
 
 Note: Due to the high computational cost of MD simulations and DFT calculations—and since they are not the main focus of this tutorial—we have pre-generated both MD (in the section: 1. Exploration) and DFT (in the section: 2. Labeling) results for your convenience. The procedures used to obtain these results are described in detail within this document. In the final part of the tutorial, you will practice converting the DFT results into a dataset suitable for DeePMD-kit training (in the section: 2. Labeling).
 
-——————————————————————————————————————————————————————
 ______________________________________________________
 
 ## Objectives
