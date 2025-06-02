@@ -69,7 +69,7 @@ The parameters in the neural networks $E^{\alpha_i}$ and $g^{\alpha_i,\alpha_j}$
 $\mathcal{L} = \frac{1}{N_\mathcal{B}} \left (\sum_{l \in \mathcal{B}}  \frac{w_{\epsilon}}{N_l} \left | E_l- E(\mathbf{R}^l)\right |^2  + \frac{w_{f}}{3N_l}  \left \| \mathbf{F}_l- \mathbf{F}(\mathbf{R}^l) \right \|^2  \right)$
 
 where $\mathcal{B}$ is a mini-batch (i.e., a subset of the training set) with $N_\mathcal{B}$ atomic configurations,  $w_{\epsilon}$ and $w_{f}$ are weights. 
-Furthermore, $E_l$ and $F_l$ are reference energies and forces, $E(\mathbf{R}^l)$ and $\mathbf{F}(\mathbf{R}^l)=-{\boldsymbol{\nabla}}_{\mathbf{R}} E(\mathbf{R}^l)$ are the energy and force predictions of our model for configuration $l$ in the minibatch, and $\mathbf{R}^l$ and $N_l$ are the atomic coordinates and the number of atoms in configuration $l$.
+Furthermore, $E_l$ and $F_l$ are reference energies and forces, $E(\mathbf{R}^l)$ and $\mathbf{F}(\mathbf{R}^l)=-{\nabla}_{\mathbf{R}} E(\mathbf{R}^l)$ are the energy and force predictions of our model for configuration $l$ in the minibatch, and $\mathbf{R}^l$ and $N_l$ are the atomic coordinates and the number of atoms in configuration $l$.
 
 ### Optimizer
 
