@@ -80,14 +80,14 @@ This scheme gives a higher weight to the force term in the loss function at the 
 
 ## Training data
 
-We have practiced how to prepare the training data, so now we will use the training data for silicon prepared on [hand-on session 3](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-1/3-preparing-training-data).
+We have practiced how to prepare the training data, so now we will use the training data for silicon prepared on module-5/01-Preparing-training-data/dataset.
 These data consist of:
 - Around 400 configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 - Around 300 configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
 
 ## Training process
 
-An example input script for the training process is provided in ```scripts/input.json```.
+An example input script for the training process is provided in ```module-5/02-Training-machine-learning-potential-(MLP)/input.json```.
 Before executing it, let's analyze its contents.
 The first block is the model definition:
 ```json
@@ -116,7 +116,7 @@ The first block is the model definition:
             "seed": 25875,
         },
 ```
-We will discuss this input in the classroom and you can also find further information [here](https://docs.deepmodeling.com/projects/deepmd/en/master/model/train-se-e2-a.html).
+You can also find further information [here](https://docs.deepmodeling.com/projects/deepmd/en/master/model/train-se-e2-a.html).
 
 The next two blocks specify options for the optimization process and the definition of the loss function:
 ```json
@@ -165,7 +165,7 @@ In the last block we will specify, among other things, the training and validati
 Edit <SOME_FOLDER> to point to the directory with your training data.
 Note that we have chosen a somewhat arbitrary separation between training and validation data.
 
-Now it's time to start training the model for the potential energy surface!
+Now it's time to start training the model for the potential energy surface! [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/training_mlps.ipynb)
 Execute ```dp train input.json``` to start training.
 The training process should take about 15 minutes.
 You can monitor its progress in the file lcurve.out.
@@ -182,10 +182,13 @@ The first few lines are as follows:
 where the columns represent the training steps, the total RMS error (val-validation and trn-training), the RMS error in energy, the RMS error in the forces, and the learning rate.
 You can plot the number of steps vs the RMS errors to follow the progress of the training process.
 
-Training MLPs using DeepMD-kit
------------------------------
+## 🔍 Loss Curve Visualization
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/training_mlps.ipynb)
+To visualize the training loss evolution of the model:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/checking_lcurve_out.ipynb)
+
+
 
 Compressinging MLPs using DeepMD-kit
 -----------------------------
@@ -212,11 +215,7 @@ This folder contains **four trained machine learning potentials (MLPs)** as well
 - `lcurve.out`  
   → Training log file that records the evolution of the **loss function**, including the RMSE of energy and forces on both training and validation sets.
 
-## 🔍 Loss Curve Visualization
 
-To visualize the training loss evolution of the model:
-
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/03-Trained%20MLPs%20(Folder%2002%20Output)/checking_lcurve_out.ipynb)
 
 
 ---
