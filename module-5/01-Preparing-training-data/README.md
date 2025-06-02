@@ -42,7 +42,7 @@ dump_modify             myDump element Si
 
 *************************************Crystalline Si - Random perturbations*************************************
 
-Using this script (perturbations.py)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/perturbations.ipynb), first, the structurally optimized structure of bulk Si with 8 atoms will be read as ASE atoms object. 
+In this Jupyter Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/perturbations.ipynb), first, the structurally optimized structure of bulk Si with 8 atoms will be read as ASE atoms object. 
 Then the supercell will be constructed by expanding the unit cell using (2 x 2 x 2) transformation vector which yields the supercell with 64 atoms.
 
 ```python
@@ -80,7 +80,7 @@ for i in range(num_iterations):
     write('pw-si-' + str(i) + '.in',conf, format='espresso-in',input_data=input_qe, pseudopotentials=pseudopotentials)
 ```
 
-Let's type `python perturbations.py` to generate QE input files. Let's play with the `max_displacement` and `max_cell_change` variables by constructing the different datasets to sample enough chemical spaces (refer to `0.05A-2p`, `0.1A-3p`, `0.2A-5p` directories).
+Let's play with the `max_displacement` and `max_cell_change` variables by constructing the different datasets to sample enough chemical spaces (refer to `0.05A-2p`, `0.1A-3p`, `0.2A-5p` directories).
 
 <br/>
 
