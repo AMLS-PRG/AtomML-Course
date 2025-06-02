@@ -1,7 +1,5 @@
 # 📘 Module 5 - Training ML Models for the Potential Energy Surface
 
-——————————————————————————————————————————————————
-
 In this section's hands-on example, we will demonstrate how to train a machine learning potential (MLP) using an initial dataset, perform molecular dynamics (MD) simulations driven by the trained MLP, and analyze the resulting trajectories.
 
 The workflow consists of the following steps:
