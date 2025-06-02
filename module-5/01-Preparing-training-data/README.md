@@ -18,7 +18,7 @@ Introduction: We will explore configurations for building a dataset, which consi
 ##################################Liquid Si - MD simulations with another force field##################################
 
 We will now run molecular dynamics simulation of liquid Si with the Stillinger-Weber force field using LAMMPS.
-The LAMMPS input files can be found in the directory `liquid-si-64/trajectory-lammps-1700K-1bar` for a simulation at 1 bar and 1700 K (approximate melting temperature of Stillinger-Weber Si).
+The LAMMPS input files can be found in the directory `module-5/01-Preparing-training-data/dataset/liquid-si-64/trajectory-lammps-1700K-1bar` for a simulation at 1 bar and 1700 K (approximate melting temperature of Stillinger-Weber Si).
 The MD simulations can be run with the command,
 
 ```shell
