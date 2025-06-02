@@ -37,7 +37,8 @@ where $u=(r - r_s)/(r_c - r_s)$, and $r_s$ and $r_c$ are smooth and hard cutoffs
 Next, we construct a matrix $\mathbf{R}_i \in \mathbb{R}^{N_i \times 4}$ of generalized coordinates with rows,
 
 <p float="left">
-  <img src="https://github.com/CSIprinceton/workshop-july-2023/raw/main/hands-on-sessions/day-2/4-first-model/eq2.png" width="350">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)
+/eq2.png" width="350">
 </p>
 
 where $(x_{ij},y_{ij},z_{ij})$ is the distance vector from atom $j$ to atom $i$, and $r_{ij}$ is the norm of such distance.
