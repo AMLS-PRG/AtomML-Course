@@ -15,6 +15,6 @@ In this section's hands-on example, we will demonstrate how to train a machine l
 By iteratively repeating steps 01 to 03, one can implement an active learning scheme to improve the MLP during the simulation process.
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/Figure5-1.jpg" width="500">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/Figure5-1.jpg" width="1000">
 </p>
 
