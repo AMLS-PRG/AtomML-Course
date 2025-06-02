@@ -30,22 +30,21 @@ $E(\mathbf{R})=\sum\limits_{i=1}^N E^{\alpha_i}(\mathbf{D}_i)$
 The starting point for the definition of the descriptors $\mathbf{D}_i$ is a continuous and differentiable switching function,
 
 <p float="left">
-  <img src="https://github.com/CSIprinceton/workshop-july-2023/raw/main/hands-on-sessions/day-2/4-first-model/eq1.png" width="350">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq1.png" width="350">
 </p>
 
 where $u=(r - r_s)/(r_c - r_s)$, and $r_s$ and $r_c$ are smooth and hard cutoffs, respectively.
 Next, we construct a matrix $\mathbf{R}_i \in \mathbb{R}^{N_i \times 4}$ of generalized coordinates with rows,
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)
-/eq2.png" width="350">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq2.png" width="350">
 </p>
 
 where $(x_{ij},y_{ij},z_{ij})$ is the distance vector from atom $j$ to atom $i$, and $r_{ij}$ is the norm of such distance.
 Furthermore, we define an embedding matrix $\mathbf{G}^i \in \mathbb{R}^{N_i \times M_1}$ with row $j$ given by,  
 
 <p float="left">
-  <img src="https://github.com/CSIprinceton/workshop-july-2023/raw/main/hands-on-sessions/day-2/4-first-model/eq3.png" width="200">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq3.png" width="200">
 </p>
 
 
@@ -55,7 +54,7 @@ We also define a secondary embedding matrix $\mathbf{G}'^i\in\mathbb{R}^{N_i\tim
 With these ingredients, we now write the descriptor matrix $\mathbf{D}_i \in \mathbb{R}^{M_1 \times M_2}$ as,
 
 <p float="left">
-  <img src="https://github.com/CSIprinceton/workshop-july-2023/raw/main/hands-on-sessions/day-2/4-first-model/eq4.png" width="200">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq4.png" width="200">
 </p>
 
 which is subsequently flatten into a vector of $M_1 \times M_2$ elements and is used as input in the equation above.
