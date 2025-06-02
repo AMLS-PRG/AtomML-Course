@@ -5,7 +5,8 @@ In this section's hands-on example, we will demonstrate how to train a machine l
 The workflow consists of the following steps:
 
 1. Preparing the Initial Configuration and Labeling
-2. Training MLPs Using a Multilayer Neural Network
+2. Training MLPs
+3. Error Analysis
 3. MD Simulations Driven by the MLP
 4. Analyzing the Trajectory from MD
 

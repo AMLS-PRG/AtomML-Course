@@ -1,8 +1,6 @@
 
 # Train your first first-principles machine-learning force field #
 
-________________________________________________________________
-
 ## Aims
 
 Using the DFT energies and forces obtained in the previous tutorial, train a model for the potential energy surface (PES) using DeePMD-kit.
@@ -30,21 +28,21 @@ $E(\mathbf{R})=\sum\limits_{i=1}^N E^{\alpha_i}(\mathbf{D}_i)$
 The starting point for the definition of the descriptors $\mathbf{D}_i$ is a continuous and differentiable switching function,
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq1.png" width="350">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-MLP/eq1.png" width="350">
 </p>
 
 where $u=(r - r_s)/(r_c - r_s)$, and $r_s$ and $r_c$ are smooth and hard cutoffs, respectively.
 Next, we construct a matrix $\mathbf{R}_i \in \mathbb{R}^{N_i \times 4}$ of generalized coordinates with rows,
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq2.png" width="350">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-MLP/eq2.png" width="350">
 </p>
 
 where $(x_{ij},y_{ij},z_{ij})$ is the distance vector from atom $j$ to atom $i$, and $r_{ij}$ is the norm of such distance.
 Furthermore, we define an embedding matrix $\mathbf{G}^i \in \mathbb{R}^{N_i \times M_1}$ with row $j$ given by,  
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq3.png" width="200">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-MLP/eq3.png" width="200">
 </p>
 
 
@@ -54,7 +52,7 @@ We also define a secondary embedding matrix $\mathbf{G}'^i\in\mathbb{R}^{N_i\tim
 With these ingredients, we now write the descriptor matrix $\mathbf{D}_i \in \mathbb{R}^{M_1 \times M_2}$ as,
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-(MLP)/eq4.png" width="200">
+  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/02-Training-machine-learning-potential-MLP/eq4.png" width="200">
 </p>
 
 which is subsequently flatten into a vector of $M_1 \times M_2$ elements and is used as input in the equation above.
@@ -87,7 +85,7 @@ These data consist of:
 
 ## Training process
 
-An example input script for the training process is provided in ```module-5/02-Training-machine-learning-potential-(MLP)/input.json```.
+An example input script for the training process is provided in ```module-5/02-Training-machine-learning-potential-MLP/input.json```.
 Before executing it, let's analyze its contents.
 The first block is the model definition:
 ```json
@@ -165,7 +163,7 @@ In the last block we will specify, among other things, the training and validati
 Edit <SOME_FOLDER> to point to the directory with your training data.
 Note that we have chosen a somewhat arbitrary separation between training and validation data.
 
-Now it's time to start training the model for the potential energy surface! This is done by executing ```dp train input.json``` (see an example in this Jupyter Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/training_mlps.ipynb))
+Now it's time to start training the model for the potential energy surface! This is done by executing ```dp train input.json``` (see an example in this Jupyter Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-MLP/training_mlps.ipynb))
 
 You can monitor the progress in the training process in the file lcurve.out.
 The first few lines are as follows:
@@ -179,18 +177,17 @@ The first few lines are as follows:
   10000      1.06e+00    5.91e+00      6.94e-02    4.24e-02      4.23e-02    2.53e-01    1.1e-03
 ```
 where the columns represent the training steps, the total RMS error (val-validation and trn-training), the RMS error in energy, the RMS error in the forces, and the learning rate.
-You can plot the number of steps vs the RMS errors to follow the progress of the training process. 🔍 Loss Curve Visualization: To visualize the training loss evolution of the model: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/checking_lcurve_out.ipynb)
+You can plot the number of steps vs the RMS errors to follow the progress of the training process. 🔍 Loss Curve Visualization: To visualize the training loss evolution of the model: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-MLP/checking_lcurve_out.ipynb)
 
 
 
-Freezing and compressing MLPs using DeepMD-kit
------------------------------
+## Freezing and compressing MLPs using DeepMD-kit
 
 Once the training is complete, we can proceed to freeze the model using ```dp freeze```.
 This will create a deep potential file ```frozen_model.pb``` that can be used for inference (running MD or simply computing energies/forces).
 It is useful to [compress](https://pubs.acs.org/doi/full/10.1021/acs.jctc.2c00102) the model using ```dp compress -t input.json -i frozen_model.pb -o frozen_model_compressed.pb```.
 This will create a model ```frozen_model_compressed.pb``` that can perform inference significantly faster than ```frozen_model.pb```.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/compressing_mlps.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-MLP/compressing_mlps.ipynb)
 
 > **Note** Deep neural network potentials can achieve high accuracy, but often at the cost of large model sizes and high computational demands. Compressing MLPs helps reduce model complexity and inference time without significantly compromising accuracy. This is particularly useful for large-scale molecular dynamics simulations, where efficiency and scalability are critical. In this notebook, we demonstrate how to compress trained models using DeepMD-kit.
 
@@ -198,7 +195,7 @@ This will create a model ```frozen_model_compressed.pb``` that can perform infer
 
 ## Trained Machine Learning Potentials (MLPs)
 
-This folder (module-5/02-Training-machine-learning-potential-(MLP)/Trained-MLPs) contains **four trained machine learning potentials (MLPs)**.
+This folder (module-5/02-Training-machine-learning-potential-MLP/Trained-MLPs) contains **four trained machine learning potentials (MLPs)**.
 
 - `frozen_model_1_compressed.pb`, `frozen_model_2_compressed.pb`, `frozen_model_3_compressed.pb`, `frozen_model_4_compressed.pb`  
   → Fully trained MLP models.
