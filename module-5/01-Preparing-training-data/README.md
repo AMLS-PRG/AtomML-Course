@@ -213,9 +213,11 @@ To convert the prepared raw files to the NumPy, you can execute this utility in 
 
 The data should now be ready for the training process!
 
-!!! Another excellent way to directly convert output of electronic-structure calculation (pw-si-*.out) into the DeePMD-kit format (*.npy) is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html). We also provide relevant examples to demonstrate this process.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_dpdata.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_ASE.ipynb)
+### !!! 
+Another excellent way to directly convert output of electronic-structure calculation (pw-si-*.out) into the DeePMD-kit format (*.npy) is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html). We also provide relevant examples to demonstrate this process.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_dpdata.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_ASE.ipynb)
 
-!!! All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
+### !!! 
+All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
 
 
 *************************************Liquid Si - MD simulations with another force field*************************************
@@ -276,7 +278,8 @@ Next, extract the raw data files with the script `get_raw.py` as above, and conv
 The above calculations can be repeated for two other pressures, namely, +- 10 kbar, in order to sample a broad range of volumes.
 This is illustrated in the folders `trajectory-lammps-1700K-10000bar` and `trajectory-lammps-1700K-neg10000bar`.
 
-!!! All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
+### !!! 
+All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
 
 > **Note** ASE can get the correct `chemical_symbols` if the LAMMPS dump file has `element` info. Otherwise, use `traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':',specorder=[“Si”])` to pass the chemical symbols. If there are two types in LAMMPS, namely, Si and O, then `specorder=["Si", "O"]`.
 
