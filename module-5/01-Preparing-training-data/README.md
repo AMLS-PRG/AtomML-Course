@@ -220,7 +220,7 @@ The data should now be ready for the training process!
 
 ##################################Liquid Si - MD simulations with another force field##################################
 
-We can now extract configurations from MD simulations trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` which reads:
+We can now extract configurations from MD simulations trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_configurations.ipynb) which reads:
 ```python
 import numpy as np
 import ase.io
