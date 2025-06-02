@@ -9,13 +9,13 @@ The objectives of this tutorial session are:
 - Prepare DFT output data for the training process
 
 ______________________________________________________
-### *************************************1. Exploration*************************************
+### 1. Exploration
 
 Introduction: We will explore configurations for building a dataset, which consists of:
 - Configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
 - Configurations of silicon in the cubic diamond crystal structure obtained using random displacements from equilibrium atomic positions. 
 
-##################################Liquid Si - MD simulations with another force field##################################
+*************************************Liquid Si - MD simulations with another force field*************************************
 
 We will now run molecular dynamics simulation of liquid Si with the Stillinger-Weber force field using LAMMPS.
 The LAMMPS input files can be found in the directory `module-5/01-Preparing-training-data/dataset/liquid-si-64/trajectory-lammps-1700K-1bar` for a simulation at 1 bar and 1700 K (approximate melting temperature of Stillinger-Weber Si).
@@ -45,7 +45,7 @@ dump_modify             myDump element Si
 > **Note** This trajectory does not reach the accuracy of first-principles calculations.
 
 
-##################################Crystalline Si - Random perturbations##################################
+*************************************Crystalline Si - Random perturbations*************************************
 
 Using this script (perturbations.py)  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/perturbations.ipynb), first, the structurally optimized structure of bulk Si with 8 atoms will be read as ASE atoms object. 
 Then the supercell will be constructed by expanding the unit cell using (2 x 2 x 2) transformation vector which yields the supercell with 64 atoms.
@@ -90,14 +90,14 @@ Let's type `python perturbations.py` to generate QE input files. Let's play with
 <br/>
 
 
-*************************************2. Labeling*************************************
+### 2. Labeling
 
 Introduction: Energies and forces for these configurations were obtained using DFT with the PBE functional.
 You are encouraged to use the results of your own calculations.
 However, you may also use the Quantum Espresso output files that we provide in the folders ```module-5/01-Preparing-training-data/dataset/liquid-si-64``` and ```module-5/01-Preparing-training-data/dataset/perturbations-si-64```.
 
 
-##################################Crystalline Si - Random perturbations##################################
+*************************************Crystalline Si - Random perturbations*************************************
 
 You have generated a set of atomic configurations from the exploration step (1. Exploration), the next step is to label these configurations, i.e., calculate energies and forces using DFT. The following `job.sh` bash script executes Quantum Espresso on the 100 input files that we just created by performing SCF DFT calculation for each frame to evaluate the forces and energy:
 
@@ -218,7 +218,7 @@ The data should now be ready for the training process!
 !!! All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
 
 
-##################################Liquid Si - MD simulations with another force field##################################
+*************************************Liquid Si - MD simulations with another force field*************************************
 
 We can now extract configurations from MD simulations trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_configurations.ipynb) which reads:
 ```python
