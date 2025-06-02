@@ -1,7 +1,7 @@
-# Deep Modeling for Molecular Simulation
-Hands-on sessions - Day 2 - July 12, 2023
 
 Train your first first-principles machine-learning force field
+
+________________________________________________________________
 
 ## Aims
 
