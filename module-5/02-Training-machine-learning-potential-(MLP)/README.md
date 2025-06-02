@@ -183,7 +183,7 @@ You can plot the number of steps vs the RMS errors to follow the progress of the
 
 
 
-Compressing MLPs using DeepMD-kit
+Freezing and compressing MLPs using DeepMD-kit
 -----------------------------
 
 Once the training is complete, we can proceed to freeze the model using ```dp freeze```.
