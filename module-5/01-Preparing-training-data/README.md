@@ -31,12 +31,12 @@ The LAMMPS input files can be found in the directory `module-5/01-Preparing-trai
 - Later, **compare it with the model size** used in final MD simulations to better understand transferability and scaling.
 
 
-> **Note** Element infomation can be saved to LAMMPS dump file if the followed commands are used.
+> **Note** Element infomation can be saved to LAMMPS dump file if the followed commands are used. The `xs ys zs` are scaled coordinates. Other properties can be save as well, namely, atom velocities `vx vy vz`. (See more details in [doc](https://docs.lammps.org/dump.html).) When a dump file with element info is visualised by OVITO, particles will have corresponding radii and colours.
 ```
 dump                    myDump all custom ${out_freq2} si.lammps-dump-text id type element xs ys zs
 dump_modify             myDump element Si
 ```
-The `xs ys zs` are scaled coordinates. Other properties can be save as well, namely, atom velocities `vx vy vz`. (See more details in [doc](https://docs.lammps.org/dump.html).) When a dump file with element info is visualised by OVITO, particles will have corresponding radii and colours.
+
 > **Note** This trajectory is based on an empirical force field and not on first-principles calculations. However, we will recompute energies and forces using DFT calculations.
 
 
