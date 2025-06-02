@@ -129,7 +129,8 @@ For each input file `pw-si-$i.in`, Quantum Espresso will create a `pw-si-$i.out`
 
 First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
 There are many ways to carry out this task.
-Here, we propose to use a script ```get_raw.py``` based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```module-5/01-Preparing-training-data/dataset/perturbations-si-64/0.2A-5p```.
+Here, we propose to use a script ```get_raw.py```[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_raw.ipynb)
+ based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```module-5/01-Preparing-training-data/dataset/perturbations-si-64/0.2A-5p```.
 
 You can parse the atomic structures, potential energy, and atomic forces in the the following files from QE outputs using the script ```get_raw.py```:
 - ```energy.raw```
