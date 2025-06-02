@@ -87,10 +87,7 @@ Let's play with the `max_displacement` and `max_cell_change` variables by constr
 
 ## 2. Labeling
 
-Introduction: Energies and forces for these configurations were obtained using DFT with the PBE functional.
-You are encouraged to use the results of your own calculations.
-However, you may also use the Quantum Espresso output files that we provide in the folders ```module-5/01-Preparing-training-data/dataset/liquid-si-64``` and ```module-5/01-Preparing-training-data/dataset/perturbations-si-64```.
-
+We now have to compute energies and forces for these configurations using DFT. Due to time limitations, we will not do these calculations during the present tutorial. The results of the DFT calculations using Quantum Espresso can be found in the folders ```module-5/01-Preparing-training-data/dataset/liquid-si-64``` and ```module-5/01-Preparing-training-data/dataset/perturbations-si-64```.
 
 *************************************Crystalline Si - Random perturbations*************************************
 
