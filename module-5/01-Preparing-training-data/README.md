@@ -220,7 +220,7 @@ The data should now be ready for the training process!
 
 ##################################Liquid Si - MD simulations with another force field##################################
 
-We can now extract configurations from this trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` which reads:
+We can now extract configurations from MD simulations trajectory and create input files to perform DFT calculations with the python script `get_configurations.py` which reads:
 ```python
 import numpy as np
 import ase.io
@@ -269,13 +269,14 @@ for conf in traj:
       counter1 += 1
    counter2 += 1
 ```
-Execute `python get_configurations.py`.
 This will create a folder `extracted-confs` with 100 Quantum Espresso input files with the atomic configurations extracted from the trajectory `si.lammps-dump.text`.
 You can now perform DFT calculations on all of these configurations using the same script `job.sh` as above.
 Next, extract the raw data files with the script `get_raw.py` as above, and convert them into the appropriate format for `DeePMD-kit` using the `raw_to_set.sh` script.
 
 The above calculations can be repeated for two other pressures, namely, +- 10 kbar, in order to sample a broad range of volumes.
 This is illustrated in the folders `trajectory-lammps-1700K-10000bar` and `trajectory-lammps-1700K-neg10000bar`.
+
+!!! All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
 
 > **Note** ASE can get the correct `chemical_symbols` if the LAMMPS dump file has `element` info. Otherwise, use `traj=ase.io.read('si.lammps-dump-text',format='lammps-dump-text',index=':',specorder=[“Si”])` to pass the chemical symbols. If there are two types in LAMMPS, namely, Si and O, then `specorder=["Si", "O"]`.
 
