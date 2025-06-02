@@ -27,7 +27,7 @@ lmp < start.lmp
 and the simulation takes a couple of minutes to complete.
 The atomic coordinates are written every 10 ps to the file `si.lammps-dump-text` in LAMMPS dump format. 
 
-You can explore the LAMMPS trajectory. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/check_data.ipynb)
+You can explore the LAMMPS trajectory. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/check_lammpsTrj.ipynb)
 
 
 📌 You can:
