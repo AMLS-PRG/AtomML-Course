@@ -96,25 +96,6 @@ Introduction: Energies and forces for these configurations were obtained using D
 You are encouraged to use the results of your own calculations.
 However, you may also use the Quantum Espresso output files that we provide in the folders ```module-5/01-Preparing-training-data/dataset/liquid-si-64``` and ```module-5/01-Preparing-training-data/dataset/perturbations-si-64```.
 
-First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
-There are many ways to carry out this task.
-Here, we propose to use a script ```get_raw.py``` based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/scripts/```.
-You can execute this script in the folders containing the Quantum Espresso output files to obtain the following files:
-- ```energy.raw```
-- ```force.raw```
-- ```coord.raw```
-- ```box.raw```
-- ```type.raw```
-
-See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.
-The last step is to use the ```raw_to_set.sh``` utility in DeePMD to have the data ready for the training process.
-You can execute this utility in each folder containing .raw data files using the command:
-
-```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
-
-The data should now be ready for the training process!
-Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
-
 
 ##################################Crystalline Si - Random perturbations##################################
 
@@ -140,6 +121,26 @@ ps aux|grep pw.x
 If you want to shutdown the calculation, execute `kill PROCESSID` where `PROCESSID` is the id of the process `job.sh`.
 
 For each input file `pw-si-$i.in`, Quantum Espresso will create a `pw-si-$i.out` file which contains the potential energy, the forces, and other useful information. 
+
+
+First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
+There are many ways to carry out this task.
+Here, we propose to use a script ```get_raw.py``` based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/scripts/```.
+You can execute this script in the folders containing the Quantum Espresso output files to obtain the following files:
+- ```energy.raw```
+- ```force.raw```
+- ```coord.raw```
+- ```box.raw```
+- ```type.raw```
+
+See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.
+The last step is to use the ```raw_to_set.sh``` utility in DeePMD to have the data ready for the training process.
+You can execute this utility in each folder containing .raw data files using the command:
+
+```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
+
+The data should now be ready for the training process!
+Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
 
 We have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
 
