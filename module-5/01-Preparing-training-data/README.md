@@ -9,7 +9,7 @@ The objectives of this tutorial session are:
 - Prepare DFT output data for the training process
 
 ______________________________________________________
-### 1. Exploration
+## 1. Exploration
 
 Introduction: We will explore configurations for building a dataset, which consists of:
 - Configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
@@ -90,7 +90,7 @@ Let's type `python perturbations.py` to generate QE input files. Let's play with
 <br/>
 
 
-### 2. Labeling
+## 2. Labeling
 
 Introduction: Energies and forces for these configurations were obtained using DFT with the PBE functional.
 You are encouraged to use the results of your own calculations.
