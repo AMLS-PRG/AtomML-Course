@@ -186,21 +186,8 @@ file_virial.close()
 file_box.close()
 file_type.close()
 ```
-Execute this script by typing 
-```
-python get_raw.py
-```
 
-See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.
-The last step is to use the ```raw_to_set.sh``` utility in DeePMD to have the data ready for the training process.
-You can execute this utility in each folder containing .raw data files using the command:
-
-```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
-
-The data should now be ready for the training process!
-Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
-
-We have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
+Now let's verify if this script successfully generates the files `coord.raw`, `energy.raw`, `force.raw`, `virial.raw`, `box.raw`, and `type.raw`. It's important to note that while the raw format is not directly supported for training, NumPy and HDF5 binary formats are supported. We have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
 
 <br/>
 
@@ -220,13 +207,25 @@ virial   | Frame virial            | virial.raw   | Nframes \* 9 in eV
 
 <br/>
 
+To convert the prepared raw files to the NumPy, you can utilize the tool provided in the DeePMD-kit `raw_to_set.sh`
+
+
+See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.
+The last step is to use the ```raw_to_set.sh``` utility in DeePMD to have the data ready for the training process.
+You can execute this utility in each folder containing .raw data files using the command:
+
+```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
+
+The data should now be ready for the training process!
+Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
 
 
 
 
-Now let's verify if this script successfully generates the files `coord.raw`, `energy.raw`, `force.raw`, `virial.raw`, `box.raw`, and `type.raw`. It's important to note that while the raw format is not directly supported for training, NumPy and HDF5 binary formats are supported. 
 
-To convert the prepared raw files to the NumPy, you can utilize the tool provided in the DeePMD-kit `raw_to_set.sh` by
+
+
+ by
 
 ```
 /home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh
