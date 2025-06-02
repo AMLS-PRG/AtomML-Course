@@ -191,7 +191,7 @@ Once the training is complete, we can proceed to freeze the model using ```dp fr
 This will create a deep potential file ```frozen_model.pb``` that can be used for inference (running MD or simply computing energies/forces).
 It is useful to [compress](https://pubs.acs.org/doi/full/10.1021/acs.jctc.2c00102) the model using ```dp compress -t input.json -i frozen_model.pb -o frozen_model_compressed.pb```.
 This will create a model ```frozen_model_compressed.pb``` that can perform inference significantly faster than ```frozen_model.pb```.
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training%20machine%20learning%20potential%20%28MLPs%29/compressing_mlps.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/compressing_mlps.ipynb)
 
 > **Note** Deep neural network potentials can achieve high accuracy, but often at the cost of large model sizes and high computational demands. Compressing MLPs helps reduce model complexity and inference time without significantly compromising accuracy. This is particularly useful for large-scale molecular dynamics simulations, where efficiency and scalability are critical. In this notebook, we demonstrate how to compress trained models using DeepMD-kit.
 
