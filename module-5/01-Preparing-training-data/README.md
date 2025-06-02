@@ -94,7 +94,7 @@ Let's type `python perturbations.py` to generate QE input files. Let's play with
 
 Introduction: Energies and forces for these configurations were obtained using DFT with the PBE functional.
 You are encouraged to use the results of your own calculations.
-However, you may also use the Quantum Espresso output files that we provide in the folders ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/example-data/liquid-si-64``` and ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/example-data/perturbations-si-64```.
+However, you may also use the Quantum Espresso output files that we provide in the folders ```module-5/01-Preparing-training-data/dataset/liquid-si-64``` and ```module-5/01-Preparing-training-data/dataset/perturbations-si-64```.
 
 First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
 There are many ways to carry out this task.
