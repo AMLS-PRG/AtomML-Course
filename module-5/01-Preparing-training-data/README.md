@@ -22,7 +22,7 @@ Introduction: We will explore configurations for building a dataset, which consi
 *************************************Liquid Si - MD simulations with another force field*************************************
 
 We have performed molecular dynamics simulation of liquid Si with the Stillinger-Weber force field using LAMMPS.
-The LAMMPS input files can be found in the directory `module-5/01-Preparing-training-data/dataset/liquid-si-64/trajectory-lammps-1700K-1bar` for a simulation at 1 bar and 1700 K (approximate melting temperature of Stillinger-Weber Si). The trajectory obtained in this simulations can be found in the file `si.lammps-dump-text` in LAMMPS dump format (atomic coordinates are written every 10 ps). You can observe the LAMMPS trajectory using this Jupyter Notebook: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/check_lammpsTrj.ipynb)
+The LAMMPS input files can be found in the directory `module-5/01-Preparing-training-data/dataset/liquid-si-64/trajectory-lammps-1700K-1bar` for a simulation at 1 bar and 1700 K (approximate melting temperature of Stillinger-Weber Si). The trajectory obtained from this simulation can be found in the file `si.lammps-dump-text` in LAMMPS dump format (atomic coordinates are written every 10 ps). You can observe the LAMMPS trajectory using this Jupyter Notebook: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/check_lammpsTrj.ipynb)
 
 📌 You can:
 
@@ -31,12 +31,13 @@ The LAMMPS input files can be found in the directory `module-5/01-Preparing-trai
 - Later, **compare it with the model size** used in final MD simulations to better understand transferability and scaling.
 
 
-> **Note** Element infomation can be saved to LAMMPS dump file if the followed commands are used. The `xs ys zs` are scaled coordinates. Other properties can be save as well, namely, atom velocities `vx vy vz`. (See more details in [doc](https://docs.lammps.org/dump.html).) When a dump file with element info is visualised by OVITO, particles will have corresponding radii and colours.
+> **Note** Element infomation can be saved to LAMMPS dump file if the followed commands are used.
 ```
 dump                    myDump all custom ${out_freq2} si.lammps-dump-text id type element xs ys zs
 dump_modify             myDump element Si
 ```
-> **Note** This trajectory does not reach the accuracy of first-principles calculations.
+The `xs ys zs` are scaled coordinates. Other properties can be save as well, namely, atom velocities `vx vy vz`. (See more details in [doc](https://docs.lammps.org/dump.html).) When a dump file with element info is visualised by OVITO, particles will have corresponding radii and colours.
+> **Note** This trajectory is based on an empirical force field and not on first-principles calculations. However, we will recompute energies and forces using DFT calculations.
 
 
 *************************************Crystalline Si - Random perturbations*************************************
