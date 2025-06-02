@@ -113,18 +113,16 @@ max_cell_change=0.01  # Maximum fractional change in cell
 num_iterations=100
 
 for i in range(num_iterations):
-    positions=np.copy(initial_positions)
-    cell=np.copy(initial_cell)
-
-    # Displace each coordinate randomly
-    positions += np.random.rand(positions.shape[0],positions.shape[1])*2*max_displacement - max_displacement
-    conf.set_positions(positions)
-
+    conf.set_cell(initial_cell)
+    conf.set_positions(initial_positions)
+    cell = conf.get_cell()
     # Scale each cell component randomly
     cell *= 1-(np.random.rand(cell.shape[0],cell.shape[1])*2*max_cell_change-max_cell_change)
     conf.set_cell(cell,scale_atoms=True)
-	
-    # Write QE input
+    # Displace each coordinate randomly
+    positions=conf.get_positions()
+    positions += np.random.rand(positions.shape[0],positions.shape[1])*2*max_displacement - max_displacement
+    conf.set_positions(positions)
     write('pw-si-' + str(i) + '.in',conf, format='espresso-in',input_data=input_qe, pseudopotentials=pseudopotentials)
 ```
 
