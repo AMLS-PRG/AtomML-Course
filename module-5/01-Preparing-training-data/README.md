@@ -9,7 +9,7 @@ The objectives of this tutorial session are:
 - Prepare DFT output data for the training process
 
 ______________________________________________________
-*************************************1. Exploration*************************************
+### *************************************1. Exploration*************************************
 
 Introduction: We will explore configurations for building a dataset, which consists of:
 - Configurations of liquid silicon at 1700 K obtained in molecular dynamics simulations driven by the [Stillinger-Weber potential](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.31.5262).
