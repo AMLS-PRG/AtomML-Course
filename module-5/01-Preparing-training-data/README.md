@@ -214,6 +214,7 @@ To convert the prepared raw files to the NumPy, you can execute this utility in 
 The data should now be ready for the training process!
 
 !!! Another excellent way to directly convert output of electronic-structure calculation (pw-si-*.out) into the DeePMD-kit format (*.npy) is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
+
 !!! All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
 
 
