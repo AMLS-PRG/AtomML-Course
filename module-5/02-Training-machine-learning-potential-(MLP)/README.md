@@ -165,10 +165,9 @@ In the last block we will specify, among other things, the training and validati
 Edit <SOME_FOLDER> to point to the directory with your training data.
 Note that we have chosen a somewhat arbitrary separation between training and validation data.
 
-Now it's time to start training the model for the potential energy surface! [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/training_mlps.ipynb)
-Execute ```dp train input.json``` to start training.
-The training process should take about 15 minutes.
-You can monitor its progress in the file lcurve.out.
+Now it's time to start training the model for the potential energy surface! This is done by executing ```dp train input.json``` (see an example in this Jupyter Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-(MLP)/training_mlps.ipynb))
+
+You can monitor the progress in the training process in the file lcurve.out.
 The first few lines are as follows:
 ```
 #  step      rmse_val    rmse_trn    rmse_e_val  rmse_e_trn    rmse_f_val  rmse_f_trn         lr
@@ -184,7 +183,7 @@ You can plot the number of steps vs the RMS errors to follow the progress of the
 
 
 
-Compressinging MLPs using DeepMD-kit
+Compressing MLPs using DeepMD-kit
 -----------------------------
 
 Once the training is complete, we can proceed to freeze the model using ```dp freeze```.
