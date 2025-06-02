@@ -91,46 +91,12 @@ We now have to compute energies and forces for these configurations using DFT. D
 
 *************************************Crystalline Si - Random perturbations*************************************
 
-You have generated a set of atomic configurations from the exploration step (1. Exploration), the next step is to label these configurations, i.e., calculate energies and forces using DFT. The following `job.sh` bash script executes Quantum Espresso on the 100 input files that we just created by performing SCF DFT calculation for each frame to evaluate the forces and energy:
-
-###### ***If you're already familiar with DFT calculations, feel free to skip this section.***
-```shell
-conda deactivate
-export PW=/home/deepmd23admin/Softwares/QuantumEspresso/q-e-qe-7.0/bin/pw.x
-for i in `seq 0 99`
-do
-        mpirun -np 1 $PW -input pw-si-$i.in > pw-si-$i.out
-done
-```
-To run these DFT tasks in the background, you can use
-```
-chmod 777 job.sh
-nohup ./job.sh &
-```
-To monitor the processes, you can use
-```
-ps aux|grep job.sh
-ps aux|grep pw.x
-```
-If you want to shutdown the calculation, execute `kill PROCESSID` where `PROCESSID` is the id of the process `job.sh`.
-
-###### ***If you're already familiar with DFT calculations, feel free to skip the section above.***
-
-For each input file `pw-si-$i.in`, Quantum Espresso will create a `pw-si-$i.out` file which contains the potential energy, the forces, and other useful information. 
+For each input file `pw-si-$i.in`, Quantum Espresso created a `pw-si-$i.out` file which contains the potential energy, the forces, and other useful information. 
 
 
 First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
-There are many ways to carry out this task.
-Here, we propose to use a script ```get_raw.py```[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_raw.ipynb)
- based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```module-5/01-Preparing-training-data/dataset/perturbations-si-64/0.2A-5p```.
-
-You can parse the atomic structures, potential energy, and atomic forces in the the following files from QE outputs using the script ```get_raw.py``` [See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.]:
-- ```energy.raw```
-- ```force.raw```
-- ```coord.raw```
-- ```box.raw```
-- ```type.raw```
-
+There are many ways to carry out this task [See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion)]
+Here, we propose to use this Jupyter Notebook [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/get_raw.ipynb) based on [ASE](https://wiki.fysik.dtu.dk/ase/), which processes the data in the folder ```module-5/01-Preparing-training-data/dataset/perturbations-si-64/0.2A-5p```. This is an excerpt from the script:
 ```python
 import numpy as np
 import ase.io
@@ -179,7 +145,14 @@ file_box.close()
 file_type.close()
 ```
 
-Now let's verify if this script successfully generates the files `coord.raw`, `energy.raw`, `force.raw`, `virial.raw`, `box.raw`, and `type.raw`. It's important to note that while the raw format is not directly supported for training, NumPy and HDF5 binary formats are supported. So, in the next step, we have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training (*.npy). A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
+The Jupyter Notebook above will create the following files [See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.]:
+- ```energy.raw```
+- ```force.raw```
+- ```coord.raw```
+- ```box.raw```
+- ```type.raw```
+
+Now let's verify if this script successfully generates the files `coord.raw`, `energy.raw`, `force.raw`, `virial.raw`, `box.raw`, and `type.raw`. It's important to note that while the raw format is not directly supported for training, NumPy and HDF5 binary formats are supported. So, in the next step, we have to convert the .raw into the input format .npy required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
 
 <br/>
 
@@ -199,7 +172,7 @@ virial   | Frame virial            | virial.raw   | Nframes \* 9 in eV
 
 <br/>
 
-To convert the prepared raw files to the NumPy, you can execute this utility in each folder containing .raw data files using the command:
+To convert the prepared raw files to the NumPy, you can execute the ```raw_to_set``` utility in each folder containing .raw data files using the command:
 
 ```/your/path/deepmd-kit/data/raw/raw_to_set.sh 101```
 
