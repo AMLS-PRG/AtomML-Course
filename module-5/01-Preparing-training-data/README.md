@@ -129,44 +129,14 @@ For each input file `pw-si-$i.in`, Quantum Espresso will create a `pw-si-$i.out`
 
 First, we have to extract the energies and forces from the Quantum Espresso output files and organize them in the .raw filetype suitable for DeePMD.
 There are many ways to carry out this task.
-Here, we propose to use a script ```get_raw.py``` based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```$TUTORIAL_PATH/hands-on-sessions/day-2/4-first-model/scripts/```.
-You can execute this script in the folders containing the Quantum Espresso output files to obtain the following files:
+Here, we propose to use a script ```get_raw.py``` based on [ASE](https://wiki.fysik.dtu.dk/ase/) that we provide in the folder ```module-5/01-Preparing-training-data/dataset/perturbations-si-64/0.2A-5p```.
+
+You can parse the atomic structures, potential energy, and atomic forces in the the following files from QE outputs using the script ```get_raw.py```:
 - ```energy.raw```
 - ```force.raw```
 - ```coord.raw```
 - ```box.raw```
 - ```type.raw```
-
-See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.
-The last step is to use the ```raw_to_set.sh``` utility in DeePMD to have the data ready for the training process.
-You can execute this utility in each folder containing .raw data files using the command:
-
-```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
-
-The data should now be ready for the training process!
-Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
-
-We have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
-
-<br/>
-
-<div align="center">
-	
-ID       | Property                | Raw file     | Shape                  
--------- | ----------------------  | ------------ | -----------------------
-type     | Atom type indexes       | type.raw     | Natoms                 
-coord    | Atomic coordinates      | coord.raw    | Nframes \* Natoms \* 3  in Å
-box      | Boxes                   | box.raw      | Nframes \* 3 \* 3       in Å
-energy   | Frame energies          | energy.raw   | Nframes                 in eV
-force    | Atomic forces           | force.raw    | Nframes \* Natoms \* 3  in eV/Å
-virial   | Frame virial            | virial.raw   | Nframes \* 9 in eV       
-
-<em>The table is taken from [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). `Box` and `virial`: in the order `XX XY XZ YX YY YZ ZX ZY ZZ`.</em>
-</div>
-
-<br/>
-
-You can parse the atomic structures, potential energy, and atomic forces from QE outputs using the ASE calculator and a numpy-based python script named `get_raw.py`.
 
 ```python
 import numpy as np
@@ -219,6 +189,39 @@ Execute this script by typing
 ```
 python get_raw.py
 ```
+
+See the [manual](https://docs.deepmodeling.com/projects/deepmd/en/master/data/data-conv.html#raw-format-and-data-conversion) for an explanation of the format and units of these files.
+The last step is to use the ```raw_to_set.sh``` utility in DeePMD to have the data ready for the training process.
+You can execute this utility in each folder containing .raw data files using the command:
+
+```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
+
+The data should now be ready for the training process!
+Another excellent way to convert output of electronic-structure calculation into the DeePMD-kit format is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html).
+
+We have to extract the raw data from the PW outputs and convert them into the input format required by `deepMD-kit` for training. A full list of these files can be found [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). The following is a description of the basic `deepMD-kit` input formats:
+
+<br/>
+
+<div align="center">
+	
+ID       | Property                | Raw file     | Shape                  
+-------- | ----------------------  | ------------ | -----------------------
+type     | Atom type indexes       | type.raw     | Natoms                 
+coord    | Atomic coordinates      | coord.raw    | Nframes \* Natoms \* 3  in Å
+box      | Boxes                   | box.raw      | Nframes \* 3 \* 3       in Å
+energy   | Frame energies          | energy.raw   | Nframes                 in eV
+force    | Atomic forces           | force.raw    | Nframes \* Natoms \* 3  in eV/Å
+virial   | Frame virial            | virial.raw   | Nframes \* 9 in eV       
+
+<em>The table is taken from [here](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/data/system.md). `Box` and `virial`: in the order `XX XY XZ YX YY YZ ZX ZY ZZ`.</em>
+</div>
+
+<br/>
+
+
+
+
 
 Now let's verify if this script successfully generates the files `coord.raw`, `energy.raw`, `force.raw`, `virial.raw`, `box.raw`, and `type.raw`. It's important to note that while the raw format is not directly supported for training, NumPy and HDF5 binary formats are supported. 
 
