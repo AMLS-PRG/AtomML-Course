@@ -209,7 +209,7 @@ virial   | Frame virial            | virial.raw   | Nframes \* 9 in eV
 
 To convert the prepared raw files to the NumPy, you can execute this utility in each folder containing .raw data files using the command:
 
-```/home/deepmd23admin/Softwares/deepmd-kit/data/raw/raw_to_set.sh 101```
+```/your/path/deepmd-kit/data/raw/raw_to_set.sh 101```
 
 The data should now be ready for the training process!
 
