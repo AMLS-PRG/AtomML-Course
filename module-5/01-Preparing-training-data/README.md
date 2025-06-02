@@ -179,10 +179,10 @@ To convert the prepared raw files to the NumPy, you can execute the ```raw_to_se
 The data should now be ready for the training process!
 
 ### !!! 
-Another excellent way to directly convert output of electronic-structure calculation (pw-si-*.out) into the DeePMD-kit format (*.npy) is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html). We also provide relevant examples to demonstrate this process.  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_dpdata.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_ASE.ipynb)
+Another excellent way to directly convert output of electronic-structure calculation (pw-si-*.out) into the DeePMD-kit format (*.npy) is using [dpdata](https://docs.deepmodeling.com/projects/deepmd/en/master/data/dpdata.html). We also provide an example to demonstrate this process:  [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/01-Preparing-training-data/examples-for-dpdata/get_raw_files_dpdata.ipynb)
 
 ### !!! 
-All training datasets formatted for use with deepMD-kit (in .npy format) are available in module-5/01-Preparing-training-data/dataset/.
+All training datasets formatted for use with deepMD-kit (in .npy format) are available in ´´´module-5/01-Preparing-training-data/dataset/´´´
 
 
 *************************************Liquid Si - MD simulations with another force field*************************************
