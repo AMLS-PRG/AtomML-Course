@@ -99,7 +99,8 @@ However, you may also use the Quantum Espresso output files that we provide in t
 
 ##################################Crystalline Si - Random perturbations##################################
 
-Now that you have generated a set of atomic configurations from the exploration step, the next step is to label these configurations, i.e., calculate energies and forces using DFT. The following `job.sh` bash script executes Quantum Espresso on the 100 input files that we just created by performing SCF DFT calculation for each frame to evaluate the forces and energy:
+You have generated a set of atomic configurations from the exploration step (1. Exploration), the next step is to label these configurations, i.e., calculate energies and forces using DFT. The following `job.sh` bash script executes Quantum Espresso on the 100 input files that we just created by performing SCF DFT calculation for each frame to evaluate the forces and energy:
+##***If you're already familiar with DFT calculations, feel free to skip this section.***##
 ```shell
 conda deactivate
 export PW=/home/deepmd23admin/Softwares/QuantumEspresso/q-e-qe-7.0/bin/pw.x
@@ -119,6 +120,7 @@ ps aux|grep job.sh
 ps aux|grep pw.x
 ```
 If you want to shutdown the calculation, execute `kill PROCESSID` where `PROCESSID` is the id of the process `job.sh`.
+##***If you're already familiar with DFT calculations, feel free to skip the section above.***##
 
 For each input file `pw-si-$i.in`, Quantum Espresso will create a `pw-si-$i.out` file which contains the potential energy, the forces, and other useful information. 
 
