@@ -197,7 +197,7 @@ This will create a model ```frozen_model_compressed.pb``` that can perform infer
 
 
 
-# Trained Machine Learning Potentials (MLPs)
+## Trained Machine Learning Potentials (MLPs)
 
 This folder (module-5/02-Training-machine-learning-potential-(MLP)/Trained-MLPs) contains **four trained machine learning potentials (MLPs)**.
 
