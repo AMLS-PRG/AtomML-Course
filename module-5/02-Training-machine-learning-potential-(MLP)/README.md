@@ -199,19 +199,9 @@ This will create a model ```frozen_model_compressed.pb``` that can perform infer
 
 # Trained Machine Learning Potentials (MLPs)
 
-This folder contains **four trained machine learning potentials (MLPs)** as well as the **loss curve file (`lcurve.out`)** from the training process of one of the potentials.
-
-## Contents
+This folder (module-5/02-Training-machine-learning-potential-(MLP)/Trained-MLPs) contains **four trained machine learning potentials (MLPs)**.
 
 - `frozen_model_1_compressed.pb`, `frozen_model_2_compressed.pb`, `frozen_model_3_compressed.pb`, `frozen_model_4_compressed.pb`  
   → Fully trained MLP models.
-
-- `lcurve.out`  
-  → Training log file that records the evolution of the **loss function**, including the RMSE of energy and forces on both training and validation sets.
-
-
-
-
----
 
 These MLPs enable molecular dynamics simulations.
