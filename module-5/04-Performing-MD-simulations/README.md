@@ -11,25 +11,36 @@ Here, we will build a new LAMMPS data file containing the expanded model, superc
 ## Running molecular dynamics simulations
 
 We will now run molecular dynamics simulations.
-A LAMMPS script to simulate liquid silicon can be found at ```module-5/04-Performing-MD-simulations/XXXXXXXX```.
+A LAMMPS script (input_local.lmp) to simulate liquid silicon can be found at ```module-5/04-Performing-MD-simulations/runLammps```.
 This input file has been annotated to help you understand the purpose of each line.
 The simulation uses a thermostat and barostat to mantain a temperature of 1700 K and a pressure of 1 bar.
 
 The lines of the input file that instruct the code to use the DeePMD model is:
 ```
-pair_style      deepmd ../frozen_model_1_compressed.pb ../frozen_model_2_compressed.pb ../frozen_model_3_compressed.pb ../frozen_model_4_compressed.pb out_file md.out out_freq ${out_freq}
+pair_style      deepmd ./frozen_model_1_compressed.pb ./frozen_model_2_compressed.pb ./frozen_model_3_compressed.pb ./frozen_model_4_compressed.pb out_file md.out out_freq ${out_freq}
 pair_coeff      * *
 ```
 where ```frozen_model_?_compressed.pb``` are four models trained on the same data and different initial random seeds.
 These four models are employed to estimate the errors in the forces.
 We define the error $\epsilon_i$ in the $i$-th force component as $\epsilon_i^2 = \langle | f_i-\bar{f}_i |^2 \rangle$, where $\bar{f}_i = \langle f_i \rangle$ and the average $\langle \cdot \rangle$ is taken over the ensemble of models.
 The average, minimum, and maximum errors in the forces are reported every ```out_freq``` steps in the file ```md.out```.
-Four models are provided in ```molecular-dynamics/frozen_model_?_compressed.pb```, but you are encourage to use your own model trained in the previous section.
+Four models are provided in ```module-5/04-Performing-MD-simulations/runLammps/frozen_model_?_compressed.pb```, but you are encourage to use your own model trained in the previous section.
 Also, you may want to share models with other participants.
 
-You can now run the simulation using the command,
+You can now download all the necessary input files and run the molecular dynamics simulation on a GPU-enabled local cluster such as Hyperion at DIPC [Visit DIPC Hyperion Documentatio](https://scc.dipc.org/docs/).
+📥 Download input files:
 ```
-lmp < input.lmp
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/input_local.lmp
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/frozen_model_1_compressed.pb
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/frozen_model_2_compressed.pb
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/frozen_model_3_compressed.pb
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/frozen_model_4_compressed.pb
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/liquid_supercell_3x3x3.data
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/runlammps.sbatch
+```
+🚀 Submit the job to Hyperion:
+```
+sbatch runlammps.sbatch
 ```
 You can now copy the trajectory ```si.lammps-dump-text``` to your laptop and visualize it with Ovito.
 Does it show the expected behavior for a solid?
