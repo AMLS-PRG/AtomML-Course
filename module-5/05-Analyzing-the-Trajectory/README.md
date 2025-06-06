@@ -43,6 +43,8 @@ To quantify how atoms are spatially distributed relative to each other.
 Insight:
 RDF reveals short- and long-range ordering, distinguishing liquid-like disorder from solid crystalline structure.
 
+ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_rdf.ipynb)
+
 2. Mean Square Displacement (MSD)
 Purpose:
 To measure atomic mobility over time.
