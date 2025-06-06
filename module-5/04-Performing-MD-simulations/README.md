@@ -57,7 +57,7 @@ Update the temperature and the data file name as shown below:
 variable        temperature equal 300.0 # Target temperature in K
 read_data      ./solid_supercell_3x3x3.data
 ```
-Once you've made the changes, submit the updated *.lmp file again using the same batch script.
+Once you've made the changes, submit the updated *.lmp file again using the same sbatch script.
 
 
 In the simulation process, you can monitor the ```md.out``` file., which should be similar to:
