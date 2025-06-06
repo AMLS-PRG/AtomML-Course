@@ -60,7 +60,7 @@ read_data      ./solid_supercell_3x3x3.data
 Once you've made the changes, submit the updated *.lmp file again using the same batch script.
 
 
-In the simulation process, you can check the ```md.out``` file., which should be similar to:
+In the simulation process, you can monitor the ```md.out``` file., which should be similar to:
 ```
 #       step         max_devi_v         min_devi_v         avg_devi_v         max_devi_f         min_devi_f         avg_devi_f
            0       6.141403e-03       6.360340e-07       3.476040e-03       6.160679e-03       1.564173e-03       3.614160e-03
