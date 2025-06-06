@@ -46,7 +46,7 @@ sbatch runlammps.sbatch
 You can also run a molecular dynamics simulation for a solid silicon system.
 This simulation uses a thermostat and barostat to maintain a temperature of 300 K and a pressure of 1 bar.
 
-Download the same input files (input_local.lmp), MLP models (*.pb), and sbatch script (*.sbatch) as described above (*** Place it in a separate folder from the liquid simulation. ***).
+Download the same input files (input_local.lmp), MLP models (*.pb), and sbatch script (*.sbatch) as described above (***Place it in a separate folder from the liquid simulation.***).
 
 Additionally, download the solid-state data file:
 solid_supercell_3x3x3.data
@@ -57,7 +57,7 @@ Update the temperature and the data file name as shown below:
 variable        temperature equal 300.0 # Target temperature in K
 read_data      ./solid_supercell_3x3x3.data
 ```
-Once you've made the changes, submit the updated *.lmp file again using the same batch script:
+Once you've made the changes, submit the updated *.lmp file again using the same batch script.
 
 
 
