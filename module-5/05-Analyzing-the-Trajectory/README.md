@@ -52,9 +52,13 @@ To measure atomic mobility over time.
 Insight:
 MSD is used to estimate diffusion and compare atomic motion in different phases (e.g., solid vs. liquid).
 
+ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_MSD.ipynb)
+
 3. Z-Axis Density Profile
 Purpose:
 To evaluate how atom density varies along the z-axis.
 
 Insight:
-This helps detect structural layering, surface effects, or melting near interfaces.
+This helps detect structural layering.
+
+ [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_density.ipynb)
