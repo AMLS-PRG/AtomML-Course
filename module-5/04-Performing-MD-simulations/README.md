@@ -27,7 +27,7 @@ The average, minimum, and maximum errors in the forces are reported every ```out
 Four models are provided in ```module-5/04-Performing-MD-simulations/runLammps/frozen_model_?_compressed.pb```, but you are encourage to use your own model trained in the previous section.
 Also, you may want to share models with other participants.
 
-You can now download all the necessary input files and run the molecular dynamics simulation on a GPU-enabled local cluster such as Hyperion at DIPC [Visit DIPC Hyperion Documentatio](https://scc.dipc.org/docs/).
+You can now download all the necessary input files and run the molecular dynamics simulation on a GPU-enabled local cluster such as Hyperion at DIPC [(Visit DIPC Hyperion Documentation)](https://scc.dipc.org/docs/).
 
 📥 Download input files:
 ```
