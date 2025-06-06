@@ -32,3 +32,25 @@ Once the simulation has completed, analyze it with the same steps described abov
 Is the model suitable to describe liquid silicon? Why?
 
 In [hands-on session 5](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-2/5-active-learning) you will learn a technique to systematically improve the stability and accuracy of the models.
+
+
+1. Radial Distribution Function (RDF)
+Purpose:
+To quantify how atoms are spatially distributed relative to each other.
+
+Insight:
+RDF reveals short- and long-range ordering, distinguishing liquid-like disorder from solid crystalline structure.
+
+2. Mean Square Displacement (MSD)
+Purpose:
+To measure atomic mobility over time.
+
+Insight:
+MSD is used to estimate diffusion and compare atomic motion in different phases (e.g., solid vs. liquid).
+
+3. Z-Axis Density Profile
+Purpose:
+To evaluate how atom density varies along the z-axis.
+
+Insight:
+This helps detect structural layering, surface effects, or melting near interfaces.
