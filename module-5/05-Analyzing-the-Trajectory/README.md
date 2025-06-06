@@ -36,7 +36,7 @@ Is the model suitable to describe liquid silicon? Why?
 In [hands-on session 5](https://github.com/CSIprinceton/workshop-july-2023/tree/main/hands-on-sessions/day-2/5-active-learning) you will learn a technique to systematically improve the stability and accuracy of the models.
 
 
-1. Radial Distribution Function (RDF)
+1. Radial Distribution Function (RDF) ！！！！！！！！！！！！！！！！！wiki 
 Purpose:
 To quantify how atoms are spatially distributed relative to each other.
 
