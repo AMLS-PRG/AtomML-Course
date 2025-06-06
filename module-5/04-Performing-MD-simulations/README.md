@@ -8,7 +8,7 @@ This enables us to simulate systems much larger than those tractable by DFT-base
 Here, we will build a new LAMMPS data file containing the expanded model, supercell_3x3x3.data:  
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/04-Performing-MD-simulations/small-data/build_large_structures.ipynb)
 
-## Running molecular dynamics simulations
+## Running Molecular Dynamics Simulations
 
 We will now run molecular dynamics simulations.
 A LAMMPS script (input_local.lmp) to simulate liquid silicon can be found at ```module-5/04-Performing-MD-simulations/runLammps```.
