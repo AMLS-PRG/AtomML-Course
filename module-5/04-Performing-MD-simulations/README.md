@@ -60,6 +60,21 @@ read_data      ./solid_supercell_3x3x3.data
 Once you've made the changes, submit the updated *.lmp file again using the same batch script.
 
 
+In the simulation process, you can check the ```md.out``` file., which should be similar to:
+```
+#       step         max_devi_v         min_devi_v         avg_devi_v         max_devi_f         min_devi_f         avg_devi_f
+           0       6.141403e-03       6.360340e-07       3.476040e-03       6.160679e-03       1.564173e-03       3.614160e-03
+        1000       3.983807e-03       3.534347e-04       2.002133e-03       2.265209e-02       5.212460e-03       1.369438e-02
+        2000       4.729147e-03       3.986826e-04       2.127513e-03       1.862923e-02       5.243879e-03       1.081513e-02
+        3000       6.839780e-03       2.654651e-04       3.016102e-03       2.869552e-02       5.306404e-03       1.235991e-02
+```
+We suggest that you plot steps (column 1) vs the maximum deviation of the forces (column 5), and the steps (column 1) vs the average deviation of the forces (column 7).
+Are the value of the errors stable? What are their magnitudes? Can you conclude that the model is well-trained to describe the solid and liquid, or does it require further training?
+
+
+
+
+
 
 Once the simulation has completed, analyze it with the same steps described above for the solid.
 
