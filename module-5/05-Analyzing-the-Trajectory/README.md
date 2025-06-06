@@ -1,6 +1,8 @@
 # Analyzing the Trajectory
 
-You can now copy the trajectory ```si.lammps-dump-text``` to your laptop and visualize it with Ovito.
+You can now copy the trajectory ```si.lammps-dump-text``` to your laptop and visualize it with Ovito. 
+https://drive.google.com/drive/folders/1L7pvvC1_ZBMy2mbndwKh-rO2q6pRYRCG?usp=drive_link
+
 Does it show the expected behavior for a solid?
 
 Once that you have loaded the LAMMPS dump file into Ovito, you can color the atoms according to the degree of order around them.
