@@ -28,6 +28,7 @@ Four models are provided in ```module-5/04-Performing-MD-simulations/runLammps/f
 Also, you may want to share models with other participants.
 
 You can now download all the necessary input files and run the molecular dynamics simulation on a GPU-enabled local cluster such as Hyperion at DIPC [Visit DIPC Hyperion Documentatio](https://scc.dipc.org/docs/).
+
 📥 Download input files:
 ```
 wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/input_local.lmp
