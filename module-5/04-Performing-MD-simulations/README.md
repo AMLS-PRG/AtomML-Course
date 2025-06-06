@@ -69,7 +69,7 @@ In the simulation process, you can monitor the ```md.out``` file., which should 
         3000       6.839780e-03       2.654651e-04       3.016102e-03       2.869552e-02       5.306404e-03       1.235991e-02
 ```
 We suggest that you plot steps (column 1) vs the maximum deviation of the forces (column 5), and the steps (column 1) vs the average deviation of the forces (column 7).
-To visualize the evolution of the maximum and average deviation of the forces in these simulations: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/02-Training-machine-learning-potential-MLP/checking_lcurve_out.ipynb)
+To visualize the evolution of the maximum and average deviation of the forces in these simulations: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/04-Performing-MD-simulations/checking_md_out.ipynb)
 
 Are the value of the errors stable? What are their magnitudes? Can you conclude that the model is well-trained to describe the solid and liquid, or does it require further training?
 
