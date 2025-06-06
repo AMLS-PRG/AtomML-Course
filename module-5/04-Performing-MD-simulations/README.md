@@ -6,14 +6,14 @@ Now that we have trained a machine learning potential (MLP), we are able to perf
 This enables us to simulate systems much larger than those tractable by DFT-based methods like Quantum ESPRESSO (QE).
 
 Here, we will build a new LAMMPS data file containing the expanded model, supercell_3x3x3.data:  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/04-Performing%20MD%20simulations/small-data/build_large_structures.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/04-Performing-MD-simulations/small-data/build_large_structures.ipynb)
 
 ## Running molecular dynamics simulations
 
 We will now run molecular dynamics simulations.
-A LAMMPS script to simulate liquid silicon can be found at ```molecular-dynamics/solid/input.lmp```.
+A LAMMPS script to simulate liquid silicon can be found at ```module-5/04-Performing-MD-simulations/XXXXXXXX```.
 This input file has been annotated to help you understand the purpose of each line.
-The simulation uses a thermostat and barostat to mantain a temperature of 300 K and a pressure of 1 bar.
+The simulation uses a thermostat and barostat to mantain a temperature of 1700 K and a pressure of 1 bar.
 
 The lines of the input file that instruct the code to use the DeePMD model is:
 ```
