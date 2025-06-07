@@ -8,7 +8,7 @@ We can initially preview the trajectories online.
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Check_trj.ipynb)
 Does it show the expected behavior for a solid?
 
-Also, you can now copy the trajectories ```si.lammps-dump-text```[*Click here*](https://drive.google.com/drive/folders/1L7pvvC1_ZBMy2mbndwKh-rO2q6pRYRCG?usp=drive_link) and ```si_solid.lammps-dump-text```[*Click here*](https://drive.google.com/file/d/1JCFXgqru7S-DCJIZO2Xvar87Tdgfx3qZ/view?usp=drive_link) to your laptop and visualize it with Ovito. 
+Also, you can now copy the trajectories ```si.lammps-dump-text```[*Click here*](https://drive.google.com/file/d/1CSkQOyYbQ0aHf67ETLJ58Gp5RlnPkSxZ/view?usp=drive_link) and ```si_solid.lammps-dump-text```[*Click here*](https://drive.google.com/file/d/1JCFXgqru7S-DCJIZO2Xvar87Tdgfx3qZ/view?usp=drive_link) to your laptop and visualize it with Ovito. 
 
 Once that you have loaded the LAMMPS dump file into Ovito, you can color the atoms according to the degree of order around them.
 Apply the ```Identify diamond structure``` modifier that can be chosen from the ```Add modification``` dropdown menu.
