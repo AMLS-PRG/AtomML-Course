@@ -1,5 +1,6 @@
 # Analyzing the Trajectory
 
+## Visual trajectory
 Herein, we prepared two trajectories for solid and liquid silicon systems.
 The total simulation time is 100 ps, with snapshots saved every 0.1 ps, resulting in 1000 frames in total.
 
@@ -18,29 +19,20 @@ For reference, below we show liquid and solid configurations colored with the mo
   <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/05-Analyzing-the-Trajectory/si-solid.png"  width="250">
 </p>
 
-1. Radial Distribution Function (RDF) ！！！！！！！！！！！！！！！！！wiki 
-Purpose:
-To quantify how atoms are spatially distributed relative to each other.
+## Z-Axis density profile
 
-Insight:
-RDF reveals short- and long-range ordering, distinguishing liquid-like disorder from solid crystalline structure.
-
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_rdf.ipynb)
-
-2. Mean Square Displacement (MSD)
-Purpose:
-To measure atomic mobility over time.
-
-Insight:
-MSD is used to estimate diffusion and compare atomic motion in different phases (e.g., solid vs. liquid).
-
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_MSD.ipynb)
-
-3. Z-Axis Density Profile
-Purpose:
 To evaluate how atom density varies along the z-axis.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_density.ipynb)
 
-Insight:
-This helps detect structural layering.
+## Radial distribution function (RDF)
 
- [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_density.ipynb)
+To quantify how atoms are spatially distributed relative to each other.
+RDF reveals short- and long-range ordering, distinguishing liquid-like disorder from solid crystalline structure.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_rdf.ipynb)
+
+## Mean square displacement (MSD)
+
+To measure atomic mobility over time.
+MSD is used to estimate diffusion and compare atomic motion in different phases (e.g., solid vs. liquid).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_MSD.ipynb)
+
