@@ -1,5 +1,10 @@
 # Analyzing the Trajectory
 
+Herein, we prepared two trajectories for solid and liquid silicon systems.
+The total simulation time is 100 ps, with snapshots saved every 0.1 ps, resulting in 1000 frames in total.
+We can initially preview the trajectories online.
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/AMLS-PRG/AtomML-Course/blob/main/module-5/05-Analyzing-the-Trajectory/Calculate_rdf.ipynb)
+
 You can now copy the trajectory ```si.lammps-dump-text``` to your laptop and visualize it with Ovito. 
 https://drive.google.com/drive/folders/1L7pvvC1_ZBMy2mbndwKh-rO2q6pRYRCG?usp=drive_link
 
