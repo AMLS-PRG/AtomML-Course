@@ -14,9 +14,6 @@ Apply the ```Identify diamond structure``` modifier that can be chosen from the 
 For reference, below we show liquid and solid configurations colored with the modifier ```Identify diamond structure```.
 
 <p float="left">
-  <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/Figure5-1.jpg" width="1000">
-</p>
-<p float="left">
   <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/05-Analyzing-the-Trajectory/si-liquid.png" width="250"> 
   <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/05-Analyzing-the-Trajectory/si-solid.png"  width="250">
 </p>
