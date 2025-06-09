@@ -10,7 +10,7 @@ The workflow consists of the following steps:
 3. MD Simulations Driven by the MLP
 4. Analyzing the Trajectory from MD
 
-By iteratively repeating steps 1 to 3, one can implement an active learning scheme to improve the MLP during the simulation process.
+By iteratively repeating steps 1 to 4, one can implement an active learning scheme to improve the MLP during the simulation process.
 
 <p float="left">
   <img src="https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/Figure5-1.jpg" width="1000">
