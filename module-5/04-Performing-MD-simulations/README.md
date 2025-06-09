@@ -50,6 +50,9 @@ Download the same input files (input_local.lmp), MLP models (*.pb), and sbatch s
 
 Additionally, download the solid-state data file:
 solid_supercell_3x3x3.data
+```
+wget https://raw.githubusercontent.com/AMLS-PRG/AtomML-Course/main/module-5/04-Performing-MD-simulations/runLammps/solid_supercell_3x3x3.data
+```
 
 Modify the input file (input_local.lmp):
 Update the temperature and the data file name as shown below:
